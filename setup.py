@@ -30,7 +30,7 @@ setup(
 	author_email='me@kennethreitz.com',
 	url='http://tablib.org',
 	packages= [
-		'pyandoc',
+		'pandoc',
 	],
 	install_requires=required,
 	license='MIT',

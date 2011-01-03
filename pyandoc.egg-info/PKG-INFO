@@ -6,7 +6,29 @@ Home-page: http://tablib.org
 Author: Kenneth Reitz
 Author-email: me@kennethreitz.com
 License: MIT
-Description: 
+Description: Pyandoc: a simple Pandoc wrapper for Python
+        
+        
+        Requirments
+        +++++++++++
+        
+        * Pandoc
+        
+        
+        
+        Usage
+        +++++
+        
+        ::
+        	import pandoc
+        	
+        
+        Roadmap
+        +++++++
+        
+        * Cleanup
+        * 
+        
         
         
 Platform: UNKNOWN

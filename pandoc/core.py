@@ -19,9 +19,7 @@ class Document(object):
 		'rst', 'rst+lhs', 'mediawiki', 'rtf'
 	)
 
-	# odt
-	# epub
-	
+	# TODO: Add odt, epub formats (requires file access, not stdout)
 	
 	def __init__(self):
 		self._content = None
@@ -51,33 +49,3 @@ class Document(object):
 		)
 
 		return p.communicate(self._content)[0]
-
-	
-test = """
-<h1>dude this is awesome</h1>
-<ul>
-    <li>hi</li>
-    <li>hi</li>
-    <li>hi</li>
-</ul>
-"""
-
-test = """
-# dude this is awesome
-
-* test
-* testing
-* 124
-
-<script>
- var hi = 'no'.
-</script>
-
-"""
-
-
-doc = Document()
-doc.markdown = test
-print doc.rst
-
-# print html2rst(test)
