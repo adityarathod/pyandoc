@@ -4,7 +4,7 @@
 import os
 import sys
 
-from distutils.core import setup
+from setuptools import setup
 
 
 def publish():
@@ -30,11 +30,7 @@ setup(
 	author_email='me@kennethreitz.com',
 	url='http://tablib.org',
 	packages= [
-		'tablib', 'tablib.formats', 
-		'tablib.packages',
-		'tablib.packages.simplejson',
-		'tablib.packages.xlwt',
-		'tablib.packages.yaml', 
+		'pyandoc',
 	],
 	install_requires=required,
 	license='MIT',

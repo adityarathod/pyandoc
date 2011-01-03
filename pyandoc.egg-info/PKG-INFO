@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: pyandoc
+Version: 0.1.0
+Summary: Python wrapper for Pandoc - the universal document converter
+Home-page: http://tablib.org
+Author: Kenneth Reitz
+Author-email: me@kennethreitz.com
+License: MIT
+Description: 
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
