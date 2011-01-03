@@ -1,9 +1,10 @@
 import subprocess
 
-PANDOC_PATH = '/Users/kreitz/.cabal/bin/pandoc'
+PANDOC_PATH = '/Users/kreitz/.cabal/bin//pandoc'
+
 
 class Document(object):
-	"""A generic formatted document"""
+	"""A formatted document."""
 	
 	INPUT_FORMATS = (
 		'native', 'markdown', 'markdown+lhs', 'rst', 
@@ -23,7 +24,8 @@ class Document(object):
 	
 	
 	def __init__(self):
-		self.content = None
+		self._content = None
+		self._format = None
 		self._register_formats()
 			
 	@classmethod
@@ -31,20 +33,24 @@ class Document(object):
 		"""Adds format properties."""
 		for fmt in cls.OUTPUT_FORMATS:
 			clean_fmt = fmt.replace('+', '_')
-			setattr(cls, clean_fmt, property(lambda x, fmt=fmt: cls._output(x, fmt)))
-		
+			setattr(cls, clean_fmt, property(
+				(lambda x, fmt=fmt: cls._output(x, fmt)), # fget
+				(lambda x, y, fmt=fmt: cls._input(x, y, fmt)))) # fset
+	
+	def _input(self, value, format=None):
+		# format = format.replace('_', '+')
+		self._content = value
+		self._format = format
 	
 	def _output(self, format):
 		# print format
 		p = subprocess.Popen(
-			[PANDOC_PATH, '--from=html', '--to=%s' % format],
+			[PANDOC_PATH, '--from=%s' % self._format, '--to=%s' % format],
 			stdin=subprocess.PIPE, 
 			stdout=subprocess.PIPE
 		)
 
-		return p.communicate(self.content)[0]
-		# 			
-		# return format
+		return p.communicate(self._content)[0]
 
 	
 test = """
@@ -56,9 +62,22 @@ test = """
 </ul>
 """
 
+test = """
+# dude this is awesome
+
+* test
+* testing
+* 124
+
+<script>
+ var hi = 'no'.
+</script>
+
+"""
+
 
 doc = Document()
-doc.content = test
-print doc.rtf
+doc.markdown = test
+print doc.rst
 
 # print html2rst(test)
