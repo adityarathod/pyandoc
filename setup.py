@@ -28,7 +28,7 @@ setup(
 	                 open('HISTORY.rst').read(),
 	author='Kenneth Reitz',
 	author_email='me@kennethreitz.com',
-	url='http://tablib.org',
+	url='http://github.com/kennethreitz/pyandoc',
 	packages= [
 		'pandoc',
 	],
