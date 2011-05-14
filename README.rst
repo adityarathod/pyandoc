@@ -42,7 +42,27 @@ Now let's convert that into a ReST document: ::
 	-  point with `link <http://kennethreitz.com>`_!
 
 Formats available:
-	'context', 'docbook', 'epub', 'html', 'html_lhs', 'latex', 'latex_lhs', 'man', 'markdown', 'markdown_lhs', 'mediawiki', 'native', 'odt', 'opendocument', 'plain', 'rst', 'rst_lhs', 'rtf', 's5', 'slidy', 'texinfo'
+	- context
+	- docbook
+	- epub
+	- html
+	- html_lhs
+	- latex
+	- latex_lhs
+	- man
+	- markdow
+	- nmarkdown_lhs
+	- mediawiki
+	- native
+	- odt
+	- opendocument
+	- plain
+	- rst
+	- rst_lhs
+	- rtf
+	- s5
+	- slidy
+	- texinfo'
 
 Enjoy.
 
