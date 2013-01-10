@@ -7,7 +7,7 @@ PANDOC_PATH = 'pandoc'
 
 def set_path(path):
     global PANDOC_PATH
-	PANDOC_PATH = path
+    PANDOC_PATH = path
 
 class Document(object):
     """A formatted document."""
