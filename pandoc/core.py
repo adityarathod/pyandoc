@@ -3,8 +3,11 @@ from os.path import exists
 from tempfile import NamedTemporaryFile
 import os
 
-PANDOC_PATH = r'pandoc'
+PANDOC_PATH = 'pandoc'
 
+def set_path(path):
+    global PANDOC_PATH
+	PANDOC_PATH = path
 
 class Document(object):
     """A formatted document."""
