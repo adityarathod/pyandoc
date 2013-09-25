@@ -1,13 +1,24 @@
+#!/usr/bin/python
+# -*- encoding: utf-8 -*-
+"""
+
+"""
 import subprocess
 from os.path import exists
 from tempfile import NamedTemporaryFile
 import os
 
-PANDOC_PATH = 'pandoc'
+# Import find executable engine
+try:
+    from shutil import which
+except ImportError:
+    from distutils.spawn import find_executable
 
-def set_path(path):
-    global PANDOC_PATH
-    PANDOC_PATH = path
+    which = find_executable
+
+# Path to the executable
+PANDOC_PATH = which('pandoc')
+
 
 class Document(object):
     """A formatted document."""
@@ -32,7 +43,10 @@ class Document(object):
         self._format = None
         self._register_formats()
         self.arguments = []
-    
+
+        if not exists(PANDOC_PATH):
+            raise OSError("Path to pandoc executable does not exists")
+
 
     def bib(self, bibfile):
         if not exists(bibfile):
