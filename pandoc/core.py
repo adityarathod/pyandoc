@@ -22,7 +22,7 @@ class Document(object):
         'docbook', 'opendocument', 'odt',
         'latex', 'latex+lhs', 'context', 'texinfo', 
         'man', 'markdown', 'markdown+lhs', 'plain', 
-        'rst', 'rst+lhs', 'mediawiki', 'rtf'
+        'rst', 'rst+lhs', 'mediawiki', 'rtf', 'markdown_github'
     )
 
     # TODO: Add odt, epub formats (requires file access, not stdout)
