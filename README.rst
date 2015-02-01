@@ -10,15 +10,18 @@ Requirements
 Usage
 +++++
 
-Get setup. ::
+Get setup.
+
+.. code-block:: python
 
 	import pandoc
 
 	pandoc.PANDOC_PATH = '/usr/bin/pandoc'
 
 
-Let's start with a Markdown document: ::
+Let's start with a Markdown document:
 
+.. code-block:: python
 
 	doc = pandoc.Document()
 	doc.markdown = '''
