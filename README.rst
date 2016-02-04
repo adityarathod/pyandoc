@@ -65,7 +65,7 @@ Formats available:
 	- rtf
 	- s5
 	- slidy
-	- texinfo'
+	- texinfo
 
 Enjoy.
 
