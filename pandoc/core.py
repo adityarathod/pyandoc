@@ -22,22 +22,21 @@ PANDOC_PATH = which('pandoc')
 
 class Document(object):
     """A formatted document."""
-    INPUT_FORMATS = (
-        'native', 'markdown', 'markdown+lhs', 'rst', 
-        'rst+lhs', 'html', 'latex', 'latex+lhs'
-    )
-    
+
     # removed pdf and epub which cannot be handled by stdout
     OUTPUT_FORMATS = (
-        'native', 'html', 'html+lhs', 's5', 'slidy', 
-        'docbook', 'opendocument', 'odt',
-        'latex', 'latex+lhs', 'context', 'texinfo', 
-        'man', 'markdown', 'markdown+lhs', 'plain', 
-        'rst', 'rst+lhs', 'mediawiki', 'rtf', 'markdown_github'
+        'asciidoc', 'beamer', 'commonmark', 'context', 'docbook',
+        'docx', 'dokuwiki', 'dzslides', 'epub', 'epub3', 'fb2',
+        'haddock', 'html', 'html5', 'icml', 'json', 'latex', 'man',
+        'markdown', 'markdown_github', 'markdown_mmd',
+        'markdown_phpextra', 'markdown_strict', 'mediawiki', 'native',
+        'odt', 'opendocument', 'opml', 'org', 'pdf', 'plain',
+        'revealjs', 'rst', 'rtf', 's5', 'slideous', 'slidy', 'texinfo',
+        'textile'
     )
 
     # TODO: Add odt, epub formats (requires file access, not stdout)
-    
+
     def __init__(self):
         self._content = None
         self._format = None
@@ -63,12 +62,12 @@ class Document(object):
         if not exists(abbrfile):
             raise IOError("Abbreviations file not found: " + abbrfile)
         self.add_argument("citation-abbreviations=%s" % abbrfile)
-        
+
 
     def add_argument(self, arg):
         self.arguments.append("--%s" % arg)
         return self.arguments
-        
+
 
     @classmethod
     def _register_formats(cls):
@@ -78,13 +77,13 @@ class Document(object):
             setattr(cls, clean_fmt, property(
                 (lambda x, fmt=fmt: cls._output(x, fmt)), # fget
                 (lambda x, y, fmt=fmt: cls._input(x, y, fmt)))) # fset
-    
+
 
     def _input(self, value, format=None):
         # format = format.replace('_', '+')
         self._content = value
         self._format = format
-    
+
 
     def _output(self, format):
         subprocess_arguments = [PANDOC_PATH, '--from=%s' % self._format, '--to=%s' % format]
@@ -92,14 +91,14 @@ class Document(object):
 
         p = subprocess.Popen(
                 subprocess_arguments,
-                stdin=subprocess.PIPE, 
+                stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE
         )
         return p.communicate(self._content)[0]
 
 
     def to_file(self, output_filename):
-        '''handles pdf and epub format. 
+        '''handles pdf and epub format.
         Inpute: output_filename should have the proper extension.
         Output: The name of the file created, or an IOError if failed'''
         temp_file = NamedTemporaryFile(mode="w", suffix=".md", delete=False)
@@ -107,17 +106,17 @@ class Document(object):
         temp_file.close()
 
         subprocess_arguments = [PANDOC_PATH, temp_file.name, '-o %s' % output_filename]
-        subprocess_arguments.extend(self.arguments)      
-        cmd = " ".join(subprocess_arguments) 
+        subprocess_arguments.extend(self.arguments)
+        cmd = " ".join(subprocess_arguments)
 
         fin = os.popen(cmd)
         msg = fin.read()
         fin.close()
         if msg:
             print "Pandoc message:", msg
-        
+
         os.remove(temp_file.name)
-        
+
         if exists(output_filename):
             return output_filename
         else:
