@@ -16,8 +16,6 @@ Get setup.
 
 	import pandoc
 
-	# pandoc.PANDOC_PATH = '/usr/bin/pandoc'
-
 
 Let's start with a Markdown document:
 
