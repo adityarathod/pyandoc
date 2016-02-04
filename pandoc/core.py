@@ -113,7 +113,7 @@ class Document(object):
         msg = fin.read()
         fin.close()
         if msg:
-            print "Pandoc message:", msg
+            print("Pandoc message: {}",format(msg))
 
         os.remove(temp_file.name)
 
