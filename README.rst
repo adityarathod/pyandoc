@@ -1,7 +1,7 @@
 Pyandoc: a simple Pandoc wrapper for Python
 ===========================================
 
-Pyandoc is a Python wrapper around the excellent `pandoc <http://pandoc.org>`_ utility. It allows you to convert the format of text documents, beyond your wildest comprehension.
+Pyandoc is a simple Python wrapper for the excellent `pandoc <http://pandoc.org>`_ utility. It allows you to convert the format of text documents by interacting with a `Document` object's attributes. Each supported format is available as a property, and can either read from or written to.
 
 Requirements
 ++++++++++++
