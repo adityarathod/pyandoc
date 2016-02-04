@@ -98,7 +98,7 @@ class Document(object):
 
 
     def to_file(self, output_filename):
-        '''handles pdf and epub format.
+        '''Handles pdf and epub format.
         Inpute: output_filename should have the proper extension.
         Output: The name of the file created, or an IOError if failed'''
         temp_file = NamedTemporaryFile(mode="w", suffix=".md", delete=False)

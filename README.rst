@@ -45,37 +45,44 @@ Now let's convert that into a ReST document: ::
 	-  point with `link <http://kennethreitz.com>`_!
 
 Formats available:
+	- asciidoc
+	- beamer
+	- commonmark
 	- context
 	- docbook
+	- doc- x
+	- dokuwiki
+	- dzslides
 	- epub
+	- epub3
+	- fb2
+	- haddock
 	- html
-	- html_lhs
+	- html5
+	- icml
+	- json (pandoc's AST)
 	- latex
-	- latex_lhs
 	- man
-	- markdow
-	- nmarkdown_lhs
+	- markdown
+	- markdown_github
+	- markdown_mmd
+	- markdown_phpextra
+	- markdown_strict
 	- mediawiki
 	- native
 	- odt
 	- opendocument
+	- opml
+	- org
+	- pdf
 	- plain
+	- revealjs
 	- rst
-	- rst_lhs
 	- rtf
-	- s5
+	- s5,
+	- slideous
 	- slidy
 	- texinfo
+	- textile
 
 Enjoy.
-
-
-Roadmap
-+++++++
-
-* Cleanup
-* Figure out epub, odt support
-* Figure out better path management
-* Proper Exceptions
-* Unit testing
-* CI
